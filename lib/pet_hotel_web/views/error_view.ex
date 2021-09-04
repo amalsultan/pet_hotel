@@ -1,4 +1,5 @@
 defmodule PetHotelWeb.ErrorView do
+    @moduledoc false
   use PetHotelWeb, :view
 
   # If you want to customize a particular status code

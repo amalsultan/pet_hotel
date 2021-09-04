@@ -1,6 +1,6 @@
 defmodule PetHotel.PetOwners do
   @moduledoc """
-  The PetOwners context.
+  PetOwners context creates, updates, deletes and lists pet owners
   """
 
   import Ecto.Query, warn: false

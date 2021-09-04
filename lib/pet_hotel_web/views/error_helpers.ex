@@ -1,7 +1,9 @@
 defmodule PetHotelWeb.ErrorHelpers do
-  @moduledoc """
-  Conveniences for translating and building error messages.
-  """
+    @moduledoc false
+
+
+  # Conveniences for translating and building error messages.
+
 
   @doc """
   Translates an error message using gettext.

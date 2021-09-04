@@ -1,4 +1,7 @@
 defmodule PetHotelWeb.Schema do
+  @moduledoc """
+  This module defines the graphQL Schema for pet_hotel apis. It imports queries and mutations from different modules to expose it for api usage
+  """
   use Absinthe.Schema
 
   import_types(PetHotelWeb.GraphQL.PetOwnerTypes)

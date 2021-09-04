@@ -2,7 +2,7 @@ defmodule PetHotel.Pets do
   alias PetHotel.PetOwners.PetOwner
   alias PetHotel.Pets.Pet
   @moduledoc """
-  The Pets context.
+  Pets context creates, updates, deletes and lists pets
   """
 
   import Ecto.Query, warn: false

@@ -1,4 +1,7 @@
 defmodule PetHotelWeb.GraphQL.PetTypes do
+    @moduledoc """
+    This module defines the graphQL Schema of pets. It includes create, update, delete and list apis schema
+  """
   use Absinthe.Schema.Notation
   alias PetHotelWeb.PetResolver
 

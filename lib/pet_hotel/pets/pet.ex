@@ -1,4 +1,5 @@
 defmodule PetHotel.Pets.Pet do
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
 
