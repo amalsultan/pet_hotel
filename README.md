@@ -9,6 +9,10 @@ To start your Phoenix server:
   * Start Phoenix endpoint with `mix phx.server`
 
 Now you can visit [`localhost:4000/api/graphiql`](http://localhost:4000/api/graphiql) from your browser.
+# Extra Liberaries Used
+      {:ex_doc, "~> 0.21"} #to generate documentation of code
+      {:joken, "~> 2.2"}   #to generate JWT token for authentication
+      {:cloak, "~> 1.1.1"} #to encrypt and decrypt password
 # Sample QraphQL Queries
 ## SignUp
 mutation{
@@ -31,6 +35,16 @@ mutation {
     name
   }
 }
+
+{ petOwners(page: 1, pageSize: 10){ id name} }
+
+{
+  getPetOwner(id: 1){
+    name
+    id
+  }
+}
+
 ## Pet Owner Mutations
 mutation{
   createPetOwner(input: {name: "Saleha Maryam"}){
@@ -51,6 +65,10 @@ mutation{
 }
 
 ## Pet Queries
+{ allPets(page: 1, pageSize: 10, petOwnerId: 1){ id name} }
+
+{ allPets(page: 1, pageSize: 10){ id name petOwnerId petOwnerName } }
+
 {
   allPets(petOwnerId: 2){
     id
@@ -59,6 +77,15 @@ mutation{
     petOwnerName
   }
 }
+
+{
+  getPet(id: 1){
+    id
+    name
+    breed
+  }
+}
+
 ## Pet Mutations 
 mutation {
   createPet(input: {id: 12, name: "Sasuke", breed: "Husky", type: "Dog", petOwnerId: 1}){
