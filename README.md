@@ -38,6 +38,13 @@ mutation {
 
 { petOwners(page: 1, pageSize: 10){ id name} }
 
+{
+  getPetOwner(id: 1){
+    name
+    id
+  }
+}
+
 ## Pet Owner Mutations
 mutation{
   createPetOwner(input: {name: "Saleha Maryam"}){
@@ -58,6 +65,8 @@ mutation{
 }
 
 ## Pet Queries
+{ allPets(page: 1, pageSize: 10, petOwnerId: 1){ id name} }
+
 { allPets(page: 1, pageSize: 10){ id name petOwnerId petOwnerName } }
 
 {
@@ -68,6 +77,15 @@ mutation{
     petOwnerName
   }
 }
+
+{
+  getPet(id: 1){
+    id
+    name
+    breed
+  }
+}
+
 ## Pet Mutations 
 mutation {
   createPet(input: {id: 12, name: "Sasuke", breed: "Husky", type: "Dog", petOwnerId: 1}){
