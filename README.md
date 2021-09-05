@@ -9,8 +9,7 @@ To start your Phoenix server:
   * Start Phoenix endpoint with `mix phx.server`
 
 Now you can visit [`localhost:4000/api/graphiql`](http://localhost:4000/api/graphiql) from your browser.
-##Sample Queries
-# Accounts and Auth
+# Sample QraphQL Queries
 mutation{
   signUp(email: "amalsultan900@gmail.com", name: "Amal Sultan", password: "Cosmos786**", passwordConfirmation: "Cosmos786**"){
     id
