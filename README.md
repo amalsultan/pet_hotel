@@ -31,6 +31,9 @@ mutation {
     name
   }
 }
+
+{ petOwners(page: 1, pageSize: 10){ id name} }
+
 ## Pet Owner Mutations
 mutation{
   createPetOwner(input: {name: "Saleha Maryam"}){
