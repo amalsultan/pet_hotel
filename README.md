@@ -9,10 +9,10 @@ To start your Phoenix server:
   * Start Phoenix endpoint with `mix phx.server`
 
 Now you can visit [`localhost:4000/api/graphiql`](http://localhost:4000/api/graphiql) from your browser.
-# Liberaries Used
-      {:ex_doc, "~> 0.21"} to generate documentation of code
-      {:joken, "~> 2.2"}   to generate JWT token for authentication
-      {:cloak, "~> 1.1.1"} to encrypt and decrypt password
+# Extra Liberaries Used
+      {:ex_doc, "~> 0.21"} #to generate documentation of code
+      {:joken, "~> 2.2"}   #to generate JWT token for authentication
+      {:cloak, "~> 1.1.1"} #to encrypt and decrypt password
 # Sample QraphQL Queries
 ## SignUp
 mutation{
