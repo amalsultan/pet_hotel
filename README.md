@@ -51,6 +51,8 @@ mutation{
 }
 
 ## Pet Queries
+{ allPets(page: 1, pageSize: 10){ id name petOwnerId petOwnerName } }
+
 {
   allPets(petOwnerId: 2){
     id
