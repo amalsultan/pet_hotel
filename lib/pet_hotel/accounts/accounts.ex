@@ -7,10 +7,34 @@ defmodule PetHotel.Accounts do
   alias PetHotel.Accounts.User
   alias PetHotel.AuthToken
 
-  def create_user(attrs) do
-    %User{}
-    |> User.changeset(attrs, :password)
-    |> Repo.insert()
+  def get_user!(email) do
+    try do
+      result =
+        Repo.get_by!(User, email: email)
+      {:ok, result}
+    rescue
+      Ecto.NoResultsError ->
+        {:error, :no_data_found}
+    end
+  end
+
+  def create_user(%{email: email} = attrs) do
+    email
+    |> get_user!()
+    |> case do
+      {:ok, _} -> {:error, :duplicate_data}
+      {:error, _} ->
+        %User{}
+        |> User.changeset(attrs, :password)
+        |> Repo.insert()
+        |> case do
+          {:ok, petOwner} -> {:ok, petOwner}
+          {:error, %Ecto.Changeset{errors: [email: {message, _}]} = _changeset} -> {:error, "email "<>message}
+          {:error, %Ecto.Changeset{errors: [password_confirmation: {message, _}]} = _changeset} -> {:error, "password "<>message}
+          {:error, %Ecto.Changeset{errors: [password: {message, _}]} = _changeset} -> {:error, "password "<>message}
+          _-> {:error, :failed}
+        end
+    end
   end
 
   def change_password(%User{} = user, %{password: password, password_confirmation: password_confirmation}) do
@@ -22,7 +46,7 @@ defmodule PetHotel.Accounts do
   @doc """
   Generate an access token and associates it with the user
   """
-  @spec generate_access_token(User.t()) :: {:ok, String.t(), User.t()}
+  @spec generate_access_token(User.t()) :: {:ok, String.t()}
   def generate_access_token(user) do
     access_token = generate_token(user)
     Ecto.Changeset.change(user, access_token: access_token)

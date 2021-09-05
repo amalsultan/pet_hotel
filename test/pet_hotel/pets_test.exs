@@ -52,7 +52,7 @@ defmodule PetHotel.PetsTest do
 
     test "delete_pet/1 deletes the pet" do
       pet = pet_fixture()
-      assert {:ok, pet} = Pets.delete(pet.id)
+      assert {:ok, true} = Pets.delete(pet.id)
       assert {:error, _} = Pets.get_pet!(pet.id)
     end
   end

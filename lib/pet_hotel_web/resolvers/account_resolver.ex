@@ -11,8 +11,8 @@ defmodule PetHotelWeb.AccountResolver do
       with {:ok, created_user} <- Accounts.create_user(args) do
         {:ok, created_user}
       else
-        {:error, %Ecto.Changeset{} = changeset} -> {:ok, changeset}
-        _ -> {:error, "Oups, nous sommes désolés, mais quelque chose s'est mal passé"}
+        {:error, message} -> {:error, message}
+        _ -> {:error, :failed}
       end
   end
 

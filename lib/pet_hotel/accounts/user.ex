@@ -30,8 +30,8 @@ defmodule PetHotel.Accounts.User do
     user
     |> cast(attrs, [:name, :email, :password, :password_confirmation])
     |> validate_required([:name, :email, :password, :password_confirmation])
-    |> validate_length(:password, min: 6)
-    |> validate_confirmation(:password, message: "Ne correspond pas")
+    |> validate_length(:password, min: 6, message: "should be atleast 6 characters")
+    |> validate_confirmation(:password, message: "does not match")
     |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
     |> put_pass_hash()
