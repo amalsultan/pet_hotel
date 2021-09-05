@@ -16,6 +16,6 @@ defmodule PetHotel.Pets.Pet do
   def changeset(pet, attrs) do
     pet
     |> cast(attrs, [:id, :name, :pet_owner_id, :type, :breed])
-    |> validate_required([:id, :name, :pet_owner_id])
+    |> validate_required([:name, :pet_owner_id])
   end
 end

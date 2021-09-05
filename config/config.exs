@@ -26,6 +26,18 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :pet_hotel, PetHotel.Vault,
+  ciphers: [
+    # In AES.GCM, it is important to specify 12-byte IV length for
+    # interoperability with other encryption software. See this GitHub issue
+    # for more details: https://github.com/danielberkompas/cloak/issues/93
+    #
+    # In Cloak 2.0, this will be the default iv length for AES.GCM.
+    default: {Cloak.Ciphers.AES.GCM, tag: "AES.GCM.V1", key: Base.decode64!("2/ldSrU5fw3Z1xQQtKlCbV2dLQ2TPJBTPeKnhoyoAZM="), iv_length: 12},
+    aes_gcm: {Cloak.Ciphers.AES.GCM, tag: "AES.GCM.V1", key: Base.decode64!("2/ldSrU5fw3Z1xQQtKlCbV2dLQ2TPJBTPeKnhoyoAZM="), iv_length: 12},
+    aes_ctr: {Cloak.Ciphers.AES.CTR, tag: "AES.CTR.V1", key: Base.decode64!("2/ldSrU5fw3Z1xQQtKlCbV2dLQ2TPJBTPeKnhoyoAZM=")}
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

@@ -4,6 +4,7 @@ defmodule PetHotelWeb.GraphQL.PetTypes do
   """
   use Absinthe.Schema.Notation
   alias PetHotelWeb.PetResolver
+  alias PetHotelWeb.Middleware
 
   #Objects
   @desc "pet"
@@ -36,32 +37,36 @@ defmodule PetHotelWeb.GraphQL.PetTypes do
   end
 
   #mutations
-  object :pet_mutations do
+  object :pets_mutations do
     @desc "create new pet"
     field :create_pet, :pet do
       arg(:input, :pet_input)
+      middleware(Middleware.Authorize)
       resolve(&PetResolver.create_pet/3)
     end
 
     @desc "update existing pet"
     field :update_pet, :pet do
       arg(:input, :update_pet_input)
+      middleware(Middleware.Authorize)
       resolve(&PetResolver.update_pet/3)
     end
 
     @desc "delete pet data"
     field :delete_pet, :boolean do
       arg(:id, non_null(:integer))
+      middleware(Middleware.Authorize)
       resolve(&PetResolver.delete_pet/3)
     end
 
   end
   #Queries
-  object :pet_queries do
+  object :pets_queries do
 
     @desc "get pet"
     field :get_pet, :pet do
       arg(:id, non_null(:integer))
+      middleware(Middleware.Authorize)
       resolve(&PetResolver.get_pet/3)
 
     end
@@ -71,6 +76,7 @@ defmodule PetHotelWeb.GraphQL.PetTypes do
       arg(:page_size, :integer, default_value: 10)
       arg(:page, :integer, default_value: 1)
       arg(:pet_owner_id, :integer)
+      middleware(Middleware.Authorize)
       resolve(&PetResolver.all_pets/3)
 
     end

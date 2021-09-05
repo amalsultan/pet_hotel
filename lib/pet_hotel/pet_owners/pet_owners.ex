@@ -89,6 +89,10 @@ defmodule PetHotel.PetOwners do
       {:error, %Ecto.Changeset{}}
 
   """
+  def create_pet_owner(%{id: nil} = _attrs) do
+    {:error, :invalid_input}
+  end
+
   def create_pet_owner(%{id: id} = attrs) do
     id
     |> get_pet_owner!()
@@ -127,6 +131,10 @@ defmodule PetHotel.PetOwners do
       {:error, %Ecto.Changeset{}}
 
   """
+  def update_pet_owner(%{id: nil} = _attrs) do
+    {:error, :invalid_input}
+  end
+
   def update_pet_owner(%{id: id} = attrs) do
     id
     |> get_pet_owner!()
@@ -139,7 +147,7 @@ defmodule PetHotel.PetOwners do
           {:ok, petOwner} -> {:ok, petOwner}
           {:error, %Ecto.Changeset{} = changeset} -> {:error, changeset}
         end
-      {:error, error_message} -> {:error, error_message}
+      {:error, _error_message} -> {:error, :pet_owner_data_not_found}
     end
   end
 

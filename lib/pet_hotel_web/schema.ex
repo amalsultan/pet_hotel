@@ -6,15 +6,19 @@ defmodule PetHotelWeb.Schema do
 
   import_types(PetHotelWeb.GraphQL.PetOwnerTypes)
   import_types(PetHotelWeb.GraphQL.PetTypes)
+  import_types(PetHotelWeb.GraphQL.AccountTypes)
+  import_types(PetHotelWeb.GraphQL.AuthTypes)
 
   query do
-    import_fields :pet_owner_queries
-    import_fields :pet_queries
+    import_fields :pet_owners_queries
+    import_fields :pets_queries
   end
 
   mutation do
-    import_fields :pet_mutations
-    import_fields :pet_owner_mutations
+    import_fields :pets_mutations
+    import_fields :pet_owners_mutations
+    import_fields :accounts_mutations
+    import_fields :auth_mutations
   end
 
 end

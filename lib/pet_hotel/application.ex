@@ -14,9 +14,11 @@ defmodule PetHotel.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: PetHotel.PubSub},
       # Start the Endpoint (http/https)
-      PetHotelWeb.Endpoint
+      PetHotelWeb.Endpoint,
       # Start a worker by calling: PetHotel.Worker.start_link(arg)
       # {PetHotel.Worker, arg}
+
+      PetHotel.Vault
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -45,7 +45,9 @@ defmodule PetHotel.MixProject do
       {:absinthe, "~> 1.6"},
       {:absinthe_plug, "~> 1.5"},
       {:jason, "~> 1.1"},
-      {:ex_doc, "~> 0.21"}
+      {:ex_doc, "~> 0.21"},
+      {:joken, "~> 2.2"},
+      {:cloak, "~> 1.1.1"}
     ]
   end
 

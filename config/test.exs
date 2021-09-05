@@ -7,8 +7,8 @@ use Mix.Config
 # Run `mix help test` for more information.
 config :pet_hotel, PetHotel.Repo,
   username: "postgres",
-  password: "postgres",
-  database: "pet_hotel_test#{System.get_env("MIX_TEST_PARTITION")}",
+  password: "12345",
+  database: "pet_hotel",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 

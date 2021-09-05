@@ -3,13 +3,13 @@ defmodule PetHotelWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug(PetHotelWeb.Plugs.Context)
   end
 
-  scope "/" do
+  scope "/api" do
     pipe_through :api
     forward "/graphiql", Absinthe.Plug.GraphiQL,
       schema: PetHotelWeb.Schema,
-      interface: :simple,
       context: %{pubsub: PetHotelWeb.Endpoint}
   end
 

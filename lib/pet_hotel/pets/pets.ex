@@ -107,6 +107,10 @@ defmodule PetHotel.Pets do
       {:error, %Ecto.Changeset{}}
 
   """
+  def create_pet(%{id: nil} = _attrs) do
+    {:error, :invalid_input_data}
+  end
+
   def create_pet(%{id: id} = attrs) do
     id
     |> get_pet!()
@@ -145,6 +149,10 @@ defmodule PetHotel.Pets do
       {:error, %Ecto.Changeset{}}
 
   """
+  def update_pet(%{id: nil} = _attrs) do
+    {:error, :id_required}
+  end
+
   def update_pet(%{id: id} = attrs) do
     id
     |> get_pet!()
@@ -157,7 +165,7 @@ defmodule PetHotel.Pets do
           {:ok, pet} -> {:ok, pet}
           {:error, %Ecto.Changeset{} = changeset} -> {:error, changeset}
         end
-      {:error, error_message} -> {:error, error_message}
+      {:error, _error_message} -> {:error, :pet_data_not_found}
     end
   end
 
@@ -180,6 +188,10 @@ defmodule PetHotel.Pets do
       {:ok, pet} ->
         pet
         |> Repo.delete()
+        |> case do
+          {:ok, _} -> {:ok, true}
+          {:error, _error} -> {:error, :deletion_failed}
+        end
       {:error, error} -> {:error, error}
     end
   end
