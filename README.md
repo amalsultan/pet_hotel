@@ -10,6 +10,7 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000/api/graphiql`](http://localhost:4000/api/graphiql) from your browser.
 # Sample QraphQL Queries
+Signup:
 mutation{
   signUp(email: "amalsultan900@gmail.com", name: "Amal Sultan", password: "Cosmos786**", passwordConfirmation: "Cosmos786**"){
     id
@@ -17,7 +18,7 @@ mutation{
     email
   }
 }
-
+Signin:
 mutation {
   signIn(email: "amalsultan900@gmail.com", password: "Cosmos786**") {
     token
